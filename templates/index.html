@@ -1,108 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galaxy Portfolio</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    color: #fff;
+    font-family: Arial, sans-serif;
+  }
 
-        header {
-            background-color: {{ header_background_color }};
-            color: {{ header_text_color }};
-            text-align: center;
-            padding: 20px;
-        }
+  .header {
+    text-align: center;
+    padding: 50px 0;
+  }
 
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-        }
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+  }
 
-        nav ul li {
-            display: inline;
-            margin-right: 20px;
-        }
+  .item {
+    width: 300px;
+    margin: 20px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  }
 
-        nav ul li a {
-            color: {{ nav_link_color }};
-            text-decoration: none;
-        }
+  .item img {
+    max-width: 100%;
+    border-radius: 50%;
+    border: 5px solid #fff;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  }
 
-        section {
-            padding: 20px;
-            margin-bottom: 20px;
-        }
+  .item h2 {
+    margin-top: 20px;
+    font-size: 24px;
+  }
 
-        section h2 {
-            color: {{ section_heading_color }};
-        }
+  .item p {
+    margin-top: 10px;
+    font-size: 16px;
+  }
 
-        .portfolio-item {
-            margin-bottom: 20px;
-        }
+  .contact-link {
+    text-align: center;
+    margin-top: 50px;
+  }
 
-        .portfolio-item img {
-            max-width: 100%;
-            height: auto;
-        }
+  .contact-link a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+  }
 
-        footer {
-            background-color: {{ footer_background_color }};
-            color: {{ footer_text_color }};
-            text-align: center;
-            padding: 20px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-    </style>
+  .contact-link a:hover {
+    color: #ccc;
+  }
+</style>
 </head>
 <body>
-    <header>
-        <h1>My Portfolio</h1>
-    </header>
 
-    <nav>
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+<div class="header">
+  <h1>My Galaxy Portfolio</h1>
+</div>
 
-    <section id="about">
-        <h2>About Me</h2>
-        <p>Write a brief introduction about yourself here.</p>
-    </section>
+<div class="container">
+  <div class="item">
+    <img src="your_image.jpg" alt="Your Name">
+    <h2>Your Name</h2>
+    <p>Web Developer</p>
+  </div>
 
-    <section id="portfolio">
-        <h2>Portfolio</h2>
-        <!-- Add your portfolio items here -->
-        <div class="portfolio-item">
-            <img src="portfolio-item1.jpg" alt="Portfolio Item 1">
-            <h3>Project 1</h3>
-            <p>Description of Project 1</p>
-        </div>
-        <div class="portfolio-item">
-            <img src="portfolio-item2.jpg" alt="Portfolio Item 2">
-            <h3>Project 2</h3>
-            <p>Description of Project 2</p>
-        </div>
-        <!-- Add more portfolio items as needed -->
-    </section>
+  <div class="item">
+    <img src="project1.jpg" alt="Project 1">
+    <h2>Project 1</h2>
+    <p>Description of Project 1</p>
+  </div>
 
-    <section id="contact">
-        <h2>Contact Me</h2>
-        <p>You can reach me at email@example.com</p>
-    </section>
+  <div class="item">
+    <img src="project2.jpg" alt="Project 2">
+    <h2>Project 2</h2>
+    <p>Description of Project 2</p>
+  </div>
 
-    <footer>
-        <p>&copy; 2024 My Portfolio</p>
-    </footer>
+    </div>
+
+<div class="contact-link">
+  <a href="contact.html">Contact Me</a>
+</div>
+
+  <!-- Add more items as needed -->
+
+
+
 </body>
 </html>
