@@ -9,13 +9,62 @@
             margin: 0;
             padding: 0;
             background-color: #000;
-            color: #fff;  /* Set default text color to white */
+            color: #fff;
             font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        .splash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            animation: fadeOut 1s forwards;
+            animation-delay: 3s;
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        .circle {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #fff;
+            border-top: 5px solid #f00;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .header, .container, footer {
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+            animation-delay: 3s;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
         }
 
         .header {
-            background-color: {{ header_background_color }};
-            color: {{ header_text_color }};
+            background-color: #222;
+            color: #fff;
             text-align: center;
             padding: 50px 0;
         }
@@ -35,45 +84,34 @@
             border-radius: 10px;
             text-align: center;
             box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: transform 0.3s;
         }
 
-        .item img {
-            max-width: 100%;
-            border-radius: 50%;
-            border: 5px solid #fff;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        .item:hover {
+            transform: scale(1.05);
         }
 
         .item h2 {
             margin-top: 20px;
             font-size: 24px;
-            color: #fff;  /* Ensure header text is white */
+            color: #fff;
         }
 
-        .item p {
-            margin-top: 10px;
-            font-size: 16px;
-            color: #fff;  /* Ensure paragraph text is white */
+        .item a {
+            text-decoration: none;
+            color: inherit;
         }
 
-        .contact-link {
-            text-align: center;
-            margin-top: 50px;
-        }
-
-        .contact-link a {
-            color: {{ nav_link_color }};
-            text-decoration: none; /* Remove underline */
-            font-size: 18px;
-        }
-
-        .contact-link a:hover {
-            color: #ccc;
+        .content {
+            display: none;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
         }
 
         footer {
-            background-color: {{ footer_background_color }};
-            color: {{ footer_text_color }};
+            background-color: #222;
+            color: #fff;
             text-align: center;
             padding: 20px;
         }
@@ -81,32 +119,45 @@
 </head>
 <body>
 
+<div class="splash">
+    <div class="circle"></div>
+</div>
+
 <div class="header">
     <h1>My Galaxy Portfolio</h1>
 </div>
 
 <div class="container">
-    <div class="item">
-        <a href="{{ url_for('about') }}">
-            <h2>About</h2>
-
+    <div class="item" onclick="navigateTo('about')">
+        <a href="{{ url_for('about') }}" onclick="navigateTo(event, '{{ url_for('about') }}')">
+            <h2>About Me</h2>
         </a>
     </div>
-
-    <div class="item">
-        <a href="{{ url_for('projects') }}">
+    <div class="item" onclick="navigateTo('projects')">
+        <a href="{{ url_for('projects') }}" onclick="navigateTo(event, '{{ url_for('projects') }}')">
             <h2>Projects</h2>
-
         </a>
     </div>
-
-    <div class="item">
+    <div class="item" onclick="navigateTo('contact')">
         <a href="{{ url_for('contact') }}">
             <h2>Contact</h2>
-
         </a>
     </div>
 </div>
+
+<script>
+    function navigateTo(section) {
+        const sections = document.querySelectorAll('.content');
+        sections.forEach(sec => {
+            sec.style.display = 'none';
+            sec.style.opacity = 0;
+        });
+
+        const target = document.getElementById(section);
+        target.style.display = 'block';
+        setTimeout(() => target.style.opacity = 1, 0);
+    }
+</script>
 
 </body>
 </html>

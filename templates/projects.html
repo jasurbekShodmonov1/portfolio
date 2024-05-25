@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Projects</title>
+    <title>Galaxy Portfolio - Projects</title>
     <style>
         body {
             margin: 0;
@@ -11,13 +11,58 @@
             background-color: #000;
             color: #fff;
             font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes growShrink {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.5);
+            }
+        }
+
+        .splash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .circle {
+            width: 100px;
+            height: 100px;
+            background-color: #fff;
+            border-radius: 50%;
+            animation: growShrink 2s infinite;
         }
 
         .header {
-            background-color: {{ header_background_color }};
-            color: {{ header_text_color }};
+            background-color: #222;
+            color: #fff;
             text-align: center;
             padding: 50px 0;
+            display: none;
         }
 
         .container {
@@ -25,6 +70,7 @@
             flex-wrap: wrap;
             justify-content: center;
             padding: 20px;
+            display: none;
         }
 
         .item {
@@ -35,40 +81,92 @@
             border-radius: 10px;
             text-align: center;
             box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: transform 0.3s;
         }
 
-        .item img {
-            max-width: 100%;
-            border-radius: 10px;
-            border: 5px solid #fff;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        .item:hover {
+            transform: scale(1.05);
         }
 
         .item h2 {
             margin-top: 20px;
             font-size: 24px;
+            color: #fff;
         }
 
-        .item p {
-            margin-top: 10px;
-            font-size: 16px;
+        .item a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .content {
+            display: none;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+
+        footer {
+            background-color: #222;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            display: none;
         }
     </style>
 </head>
 <body>
+
+<div class="splash">
+    <div class="circle"></div>
+</div>
 
 <div class="header">
     <h1>My Projects</h1>
 </div>
 
 <div class="container">
-    <div class="item">
-        <img src="{{ url_for('static', filename='project1.jpg') }}" alt="Project 1">
-        <h2>Project 1</h2>
-        <p>Description of Project 1</p>
+    <div class="item" onclick="navigateTo('project')">
+        <a href="{{ url_for('projects') }}">
+            <h2>Project 1</h2>
+        </a>
     </div>
-    <!-- Add more projects as needed -->
+    <div class="item" onclick="navigateTo('project')">
+        <a href="{{ url_for('projects') }}">
+            <h2>Project 2</h2>
+        </a>
+    </div>
 </div>
+
+
+
+<script>
+    function navigateTo(section) {
+        const sections = document.querySelectorAll('.content');
+        sections.forEach(sec => {
+            sec.style.display = 'none';
+            sec.style.opacity = 0;
+        });
+
+        const target = document.getElementById(section);
+        target.style.display = 'block';
+        setTimeout(() => target.style.opacity = 1, 0);
+    }
+
+    window.onload = () => {
+        const splash = document.querySelector('.splash');
+        const header = document.querySelector('.header');
+        const container = document.querySelector('.container');
+        const footer = document.querySelector('footer');
+        splash.style.animation = 'fadeOut 1s forwards';
+        setTimeout(() => {
+            splash.style.display = 'none';
+            header.style.display = 'block';
+            container.style.display = 'flex';
+            footer.style.display = 'block';
+        }, 1000);
+    };
+</script>
 
 </body>
 </html>
