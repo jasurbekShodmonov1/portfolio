@@ -12,28 +12,25 @@
             color: #fff;
             font-family: Arial, sans-serif;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
         }
 
-        @keyframes fadeOut {
-            to {
-                opacity: 0;
-                visibility: hidden;
-            }
+        .stars {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/stardust.png');
+            animation: moveStars 200s linear infinite;
+            z-index: -1;
         }
 
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes growShrink {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.5);
-            }
+        @keyframes moveStars {
+            from { background-position: 0 0; }
+            to { background-position: 10000px 10000px; }
         }
 
         .splash {
@@ -52,17 +49,32 @@
         .circle {
             width: 100px;
             height: 100px;
-            background-color: #fff;
+            border: 3px solid #fff;
+            border-top: 3px solid #ff4081;
             border-radius: 50%;
-            animation: growShrink 2s infinite;
+            animation: spin 1s linear infinite;
         }
 
+
+        .header, .container, footer {
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+            animation-delay: 2s;
+
+
         .header {
-            background-color: #222;
+            background-color: rgba(34, 34, 34, 0.8);
             color: #fff;
             text-align: center;
             padding: 50px 0;
-            display: none;
+            width: 100%;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin: 0;
+            animation: glow 1s ease-in-out infinite alternate;
         }
 
         .container {
@@ -70,7 +82,8 @@
             flex-wrap: wrap;
             justify-content: center;
             padding: 20px;
-            display: none;
+            width: 100%;
+            max-width: 1200px;
         }
 
         .item {
@@ -82,17 +95,20 @@
             text-align: center;
             box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
             cursor: pointer;
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
+            backdrop-filter: blur(5px);
         }
 
         .item:hover {
             transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
         }
 
         .item h2 {
             margin-top: 20px;
             font-size: 24px;
             color: #fff;
+            animation: glow 1s ease-in-out infinite alternate;
         }
 
         .item a {
@@ -100,73 +116,44 @@
             color: inherit;
         }
 
-        .content {
-            display: none;
-            opacity: 0;
-            animation: fadeIn 1s forwards;
-        }
-
         footer {
-            background-color: #222;
+            background-color: rgba(34, 34, 34, 0.8);
             color: #fff;
             text-align: center;
             padding: 20px;
-            display: none;
+            width: 100%;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
         }
     </style>
 </head>
 <body>
+<div class="stars"></div>
 
-<div class="splash">
-    <div class="circle"></div>
-</div>
+
 
 <div class="header">
     <h1>My Projects</h1>
 </div>
 
 <div class="container">
-    <div class="item" onclick="navigateTo('project')">
-        <a href="{{ url_for('projects') }}">
+    <div class="item" onclick="navigateTo('project1')">
+        <a href="#">
             <h2>Project 1</h2>
         </a>
     </div>
-    <div class="item" onclick="navigateTo('project')">
-        <a href="{{ url_for('projects') }}">
+    <div class="item" onclick="navigateTo('project2')">
+        <a href="#">
             <h2>Project 2</h2>
         </a>
     </div>
+    <!-- Add more projects as needed -->
 </div>
 
+<footer>
+    <p>© 2024 Galaxy Portfolio</p>
+</footer>
 
 
-<script>
-    function navigateTo(section) {
-        const sections = document.querySelectorAll('.content');
-        sections.forEach(sec => {
-            sec.style.display = 'none';
-            sec.style.opacity = 0;
-        });
-
-        const target = document.getElementById(section);
-        target.style.display = 'block';
-        setTimeout(() => target.style.opacity = 1, 0);
-    }
-
-    window.onload = () => {
-        const splash = document.querySelector('.splash');
-        const header = document.querySelector('.header');
-        const container = document.querySelector('.container');
-        const footer = document.querySelector('footer');
-        splash.style.animation = 'fadeOut 1s forwards';
-        setTimeout(() => {
-            splash.style.display = 'none';
-            header.style.display = 'block';
-            container.style.display = 'flex';
-            footer.style.display = 'block';
-        }, 1000);
-    };
-</script>
 
 </body>
 </html>

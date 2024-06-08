@@ -11,32 +11,92 @@
             background-color: #000;
             color: #fff;
             font-family: Arial, sans-serif;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .stars {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/stardust.png');
+            animation: moveStars 200s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes moveStars {
+            from { background-position: 0 0; }
+            to { background-position: 10000px 10000px; }
         }
 
         .header {
-            background-color: {{ header_background_color }};
-            color: {{ header_text_color }};
+            background-color: rgba(34, 34, 34, 0.8);
+            color: #fff;
             text-align: center;
             padding: 50px 0;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+            width: 100%;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin: 0;
+            animation: glow 1s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #fff, 0 0 20px #007bff, 0 0 30px #007bff, 0 0 40px #007bff, 0 0 50px #007bff, 0 0 60px #007bff, 0 0 70px #007bff;
+            }
+            to {
+                text-shadow: 0 0 20px #fff, 0 0 30px #007bff, 0 0 40px #007bff, 0 0 50px #007bff, 0 0 60px #007bff, 0 0 70px #007bff, 0 0 80px #007bff;
+            }
         }
 
         .content {
             text-align: center;
             padding: 20px;
+            z-index: 1;
         }
 
-        .content a {
-            color: {{ nav_link_color }};
+        .content p {
+            font-size: 1.2rem;
+        }
+
+        .icons {
+            margin-top: 20px;
+        }
+
+        .icons a {
+            margin: 0 15px;
+            color: #fff;
+            font-size: 2rem;
             text-decoration: none;
-            font-size: 18px;
+            transition: color 0.3s;
         }
 
-        .content a:hover {
-            color: #ccc;
+        .icons a:hover {
+            color: #ff4081;
         }
+
+        /* Icon Styles */
+        .icon {
+            width: 2em;
+            height: 2em;
+            display: inline-block;
+        }
+
+        .icon-telegram { background: url('https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg') no-repeat center center / contain; }
+        .icon-github { background: url('https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg') no-repeat center center / contain; }
+        .icon-linkedin { background: url('https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png') no-repeat center center / contain; }
     </style>
 </head>
 <body>
+<div class="stars"></div>
 
 <div class="header">
     <h1>Contact Me</h1>
@@ -44,6 +104,20 @@
 
 <div class="content">
     <p>You can reach me at:</p>
-    <p>Email: <a href="mailto:jasurshodmonov21020@gmail.com">jasurshodmonov21020@gmail.com</a></p>
+    <p>Email: <a href="mailto:jasurshodmonov21020@gmail.com" style="color: #00b0ff;">jasurshodmonov21020@gmail.com</a></p>
     <p>Phone: +99891 4524213</p>
-    <teleg
+    <div class="icons">
+        <a href="https://t.me/your-telegram" target="_blank" title="Telegram">
+            <span class="icon icon-telegram"></span>
+        </a>
+        <a href="https://github.com/your-github" target="_blank" title="GitHub">
+            <span class="icon icon-github"></span>
+        </a>
+        <a href="https://linkedin.com/in/your-linkedin" target="_blank" title="LinkedIn">
+            <span class="icon icon-linkedin"></span>
+        </a>
+    </div>
+</div>
+
+</body>
+</html>
