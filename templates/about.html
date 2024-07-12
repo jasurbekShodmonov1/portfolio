@@ -11,32 +11,92 @@
             background-color: #000;
             color: #fff;
             font-family: Arial, sans-serif;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+            padding-top: 20px;
+        }
+
+        .stars {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/stardust.png');
+            animation: moveStars 200s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes moveStars {
+            from { background-position: 0 0; }
+            to { background-position: 10000px 10000px; }
         }
 
         .header {
-            background-color: {{ header_background_color }};
-            color: {{ header_text_color }};
+            background-color: rgba(34, 34, 34, 0.8);
+            color: #fff;
             text-align: center;
-            padding: 50px 0;
+            padding: 30px 0;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+            width: 100%;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin: 0;
+            animation: glow 1s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #fff, 0 0 20px #007bff;
+            }
+            to {
+                text-shadow: 0 0 20px #fff, 0 0 30px #007bff;
+            }
         }
 
         .content {
             text-align: center;
             padding: 20px;
+            z-index: 1;
+            margin-top: 20px;
+        }
+
+        .content img {
+            max-width: 200px;
+            border-radius: 50%;
+        }
+
+        footer {
+            background-color: rgba(34, 34, 34, 0.8);
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+            width: 100%;
+            position: absolute;
+            bottom: 0;
         }
     </style>
 </head>
 <body>
+
+<div class="stars"></div>
 
 <div class="header">
     <h1>About Me</h1>
 </div>
 
 <div class="content">
-    <img src="{{ url_for('static', filename='your_image.jpg') }}" alt="Your Name" style="max-width: 200px; border-radius: 50%;">
+    <img src="{{ url_for('static', filename='your_image.jpg') }}" alt="Your Name">
     <h2>Your Name</h2>
     <p>Web Developer with expertise in ...</p>
 </div>
+
+
 
 </body>
 </html>

@@ -15,8 +15,9 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             height: 100vh;
+            padding-top: 20px;
         }
 
         .stars {
@@ -37,9 +38,10 @@
             background-color: rgba(34, 34, 34, 0.8);
             color: #fff;
             text-align: center;
-            padding: 50px 0;
+            padding: 30px 0;
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
             width: 100%;
+            margin-bottom: 10px;
         }
 
         .header h1 {
@@ -50,10 +52,10 @@
 
         @keyframes glow {
             from {
-                text-shadow: 0 0 10px #fff, 0 0 20px #007bff, 0 0 30px #007bff, 0 0 40px #007bff, 0 0 50px #007bff, 0 0 60px #007bff, 0 0 70px #007bff;
+                text-shadow: 0 0 10px #fff, 0 0 20px #007bff;
             }
             to {
-                text-shadow: 0 0 20px #fff, 0 0 30px #007bff, 0 0 40px #007bff, 0 0 50px #007bff, 0 0 60px #007bff, 0 0 70px #007bff, 0 0 80px #007bff;
+                text-shadow: 0 0 20px #fff, 0 0 30px #007bff;
             }
         }
 
@@ -83,7 +85,6 @@
             color: #ff4081;
         }
 
-        /* Icon Styles */
         .icon {
             width: 2em;
             height: 2em;

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+=<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -19,7 +19,7 @@
             width: 100%;
             height: 100%;
             background: url('https://www.transparenttextures.com/patterns/stardust.png');
-            animation: moveStars 200s linear infinite; /* Adjusted duration for faster stars */
+            animation: moveStars 200s linear infinite;
             z-index: -1;
         }
 
@@ -28,46 +28,10 @@
             to { background-position: 5000px 5000px; }
         }
 
-        .splash {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 10;
-            animation: fadeOut 1s forwards;
-            animation-delay: 3s;
-        }
-
-        @keyframes fadeOut {
-            to {
-                opacity: 0;
-                visibility: hidden;
-            }
-        }
-
-        .circle {
-            width: 50px;
-            height: 50px;
-            border: 5px solid #fff;
-            border-top: 5px solid #f00;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
         .header, .container, footer {
             opacity: 0;
             animation: fadeIn 1s forwards;
-            animation-delay: 3s;
+            animation-delay: 1s;
         }
 
         @keyframes fadeIn {
@@ -92,10 +56,10 @@
 
         @keyframes glow {
             from {
-                text-shadow: 0 0 10px #fff, 0 0 20px #007bff, 0 0 30px #007bff, 0 0 40px #007bff, 0 0 50px #007bff, 0 0 60px #007bff, 0 0 70px #007bff;
+                text-shadow: 0 0 10px #fff, 0 0 20px #007bff;
             }
             to {
-                text-shadow: 0 0 20px #fff, 0 0 30px #007bff, 0 0 40px #007bff, 0 0 50px #007bff, 0 0 60px #007bff, 0 0 70px #007bff, 0 0 80px #007bff;
+                text-shadow: 0 0 20px #fff, 0 0 30px #007bff;
             }
         }
 
@@ -135,27 +99,11 @@
             color: inherit;
         }
 
-        .content {
-            display: none;
-            opacity: 0;
-            animation: fadeIn 1s forwards;
-        }
 
-        footer {
-            background-color: rgba(34, 34, 34, 0.8);
-            color: #fff;
-            text-align: center;
-            padding: 20px;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
-        }
     </style>
 </head>
 <body>
 <div class="stars"></div>
-
-<div class="splash">
-    <div class="circle"></div>
-</div>
 
 <div class="header">
     <h1>My Galaxy Portfolio</h1>
@@ -163,12 +111,12 @@
 
 <div class="container">
     <div class="item" onclick="navigateTo('about')">
-        <a href="{{ url_for('about') }}" onclick="navigateTo(event, '{{ url_for('about') }}')">
+        <a href="{{ url_for('about') }}">
             <h2>About Me</h2>
         </a>
     </div>
     <div class="item" onclick="navigateTo('projects')">
-        <a href="{{ url_for('projects') }}" onclick="navigateTo(event, '{{ url_for('projects') }}')">
+        <a href="{{ url_for('projects') }}">
             <h2>Projects</h2>
         </a>
     </div>
@@ -179,19 +127,6 @@
     </div>
 </div>
 
-<script>
-    function navigateTo(event, section) {
-        event.preventDefault();
-        const sections = document.querySelectorAll('.content');
-        sections.forEach(sec => {
-            sec.style.display = 'none';
-            sec.style.opacity = 0;
-        });
 
-        const target = document.getElementById(section);
-        target.style.display = 'block';
-        setTimeout(() => target.style.opacity = 1, 0);
-    }
-</script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galaxy Portfolio - Projects</title>
+    <title>Projects - Galaxy Portfolio</title>
     <style>
         body {
             margin: 0;
@@ -12,15 +12,10 @@
             color: #fff;
             font-family: Arial, sans-serif;
             overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
         }
 
         .stars {
-            position: fixed;
+            position: absolute;
             width: 100%;
             height: 100%;
             background: url('https://www.transparenttextures.com/patterns/stardust.png');
@@ -30,44 +25,14 @@
 
         @keyframes moveStars {
             from { background-position: 0 0; }
-            to { background-position: 10000px 10000px; }
+            to { background-position: 5000px 5000px; }
         }
-
-        .splash {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-
-        .circle {
-            width: 100px;
-            height: 100px;
-            border: 3px solid #fff;
-            border-top: 3px solid #ff4081;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-
-        .header, .container, footer {
-            opacity: 0;
-            animation: fadeIn 1s forwards;
-            animation-delay: 2s;
-
 
         .header {
             background-color: rgba(34, 34, 34, 0.8);
             color: #fff;
             text-align: center;
             padding: 50px 0;
-            width: 100%;
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
         }
 
@@ -77,16 +42,23 @@
             animation: glow 1s ease-in-out infinite alternate;
         }
 
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #fff, 0 0 20px #007bff;
+            }
+            to {
+                text-shadow: 0 0 20px #fff, 0 0 30px #007bff;
+            }
+        }
+
         .container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             padding: 20px;
-            width: 100%;
-            max-width: 1200px;
         }
 
-        .item {
+        .project-item {
             width: 300px;
             margin: 20px;
             padding: 20px;
@@ -94,26 +66,24 @@
             border-radius: 10px;
             text-align: center;
             box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.3s;
             backdrop-filter: blur(5px);
         }
 
-        .item:hover {
+        .project-item:hover {
             transform: scale(1.05);
-            box-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
         }
 
-        .item h2 {
+        .project-item h3 {
             margin-top: 20px;
-            font-size: 24px;
+            font-size: 20px;
             color: #fff;
             animation: glow 1s ease-in-out infinite alternate;
         }
 
-        .item a {
+        .project-item a {
             text-decoration: none;
-            color: inherit;
+            color: #007bff;
         }
 
         footer {
@@ -121,7 +91,6 @@
             color: #fff;
             text-align: center;
             padding: 20px;
-            width: 100%;
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
         }
     </style>
@@ -129,30 +98,27 @@
 <body>
 <div class="stars"></div>
 
-
-
 <div class="header">
     <h1>My Projects</h1>
 </div>
 
 <div class="container">
-    <div class="item" onclick="navigateTo('project1')">
-        <a href="#">
-            <h2>Project 1</h2>
-        </a>
+    <div class="project-item">
+        <h3>Project 1</h3>
+        <p>A brief description of your project.</p>
+        <a href="https://example.com" target="_blank">View Project</a>
     </div>
-    <div class="item" onclick="navigateTo('project2')">
-        <a href="#">
-            <h2>Project 2</h2>
-        </a>
+    <div class="project-item">
+        <h3>Project 2</h3>
+        <p>A brief description of your project.</p>
+        <a href="https://example.com" target="_blank">View Project</a>
     </div>
-    <!-- Add more projects as needed -->
+    <div class="project-item">
+        <h3>Project 3</h3>
+        <p>A brief description of your project.</p>
+        <a href="https://example.com" target="_blank">View Project</a>
+    </div>
 </div>
-
-<footer>
-    <p>© 2024 Galaxy Portfolio</p>
-</footer>
-
 
 
 </body>
